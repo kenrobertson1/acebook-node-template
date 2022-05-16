@@ -11,7 +11,7 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
   
-  App-setup:
+  setup-environment:
     runs-on: ubuntu-latest
    
     steps:
@@ -31,6 +31,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
   
   cypress-run:
+    needs: setup-environment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
