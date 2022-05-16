@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: "./*"
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ acebook-key }}
   
   cypress-run:
     needs: setup-environment
@@ -28,7 +28,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: "./*"
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ acebook-key }}
 
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.7.0
