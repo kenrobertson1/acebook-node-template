@@ -1,7 +1,7 @@
 name: inegration
 on: [push]
 jobs:
-    check-bats-version:
+  check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -10,3 +10,4 @@ jobs:
           node-version: '18.1.0'
       - run: npm install -g bats
       - run: bats -v
+
