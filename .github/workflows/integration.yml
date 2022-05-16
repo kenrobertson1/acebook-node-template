@@ -1,4 +1,4 @@
-name: inegration
+name: integration
 on: [push]
 jobs:
   check-bats-version:
