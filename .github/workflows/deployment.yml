@@ -1,0 +1,25 @@
+name: acebook-deployment
+on: [push]
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+      node-version: [12.x, 14.x]
+        mongodb-version: ['4.0', '4.2', '4.4']
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.ACCESS_KEY}}
+        aws-secret-access-key: ${{ secrets.ACEBOOK_NODE_KEY}}
+        aws-region: ${{ env.AWS_REGION }}
+    - name: Start MongoDB Service
+      uses: supercharge/mongodb-github-action@1.6.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+    - name: Copy files to the production website with the AWS CLI
+      run: | 
+        rm -rf node_modules
+        zip -r acebook-node-template.zip .
+        aws s3 cp acebook-node-template.zip s3://acebook-node
