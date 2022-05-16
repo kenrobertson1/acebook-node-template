@@ -1,4 +1,4 @@
-name: inegration-to-main-branch-on-github
+name: inegration
 on: [push]
 jobs:
     check-bats-version:
