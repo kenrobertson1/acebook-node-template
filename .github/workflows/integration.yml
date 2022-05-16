@@ -1,16 +1,6 @@
 name: integration-test
 on: [push]
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18.1.0'
-      - run: npm install -g bats
-      - run: bats -v
-  
   setup-environment:
     runs-on: ubuntu-latest
    
@@ -47,5 +37,5 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm run start:test
-          wait-on: http://localhost:8080  
+          wait-on: http://localhost:3030  
 
