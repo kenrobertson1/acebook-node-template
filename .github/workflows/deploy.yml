@@ -5,8 +5,8 @@ on:
 
 env:
   applicationfolder: acebook-node-template
-  AWS_REGION: ##region##
-  S3BUCKET: ##s3-bucket## 
+  AWS_REGION: eu-west-2
+  S3BUCKET: acebook-node
 
 
 jobs:

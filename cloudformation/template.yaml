@@ -334,14 +334,14 @@ Resources:
       SecurityGroupEgress:
       - IpProtocol: '-1'
         CidrIp: 0.0.0.0/0      
-  WebappDeploymentBucket:
-    Type: AWS::S3::Bucket
-    Properties:
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: true
-        BlockPublicPolicy: true
-        IgnorePublicAcls: true
-        RestrictPublicBuckets: true
+  # WebappDeploymentBucket:
+  #   Type: AWS::S3::Bucket
+  #   Properties:
+  #     PublicAccessBlockConfiguration:
+  #       BlockPublicAcls: true
+  #       BlockPublicPolicy: true
+  #       IgnorePublicAcls: true
+  #       RestrictPublicBuckets: true
   CodeDeployRole:
     Type: AWS::IAM::Role
     Properties:
