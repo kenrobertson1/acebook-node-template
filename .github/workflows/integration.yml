@@ -11,6 +11,25 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
   
+  App-setup:
+    runs-on: ubuntu-latest
+   
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: use cache 
+        uses: actions/cache@v2
+        with:
+          path: "./*"
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+  
   cypress-run:
     runs-on: ubuntu-latest
     steps:
