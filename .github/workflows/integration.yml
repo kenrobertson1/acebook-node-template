@@ -11,7 +11,7 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
   
-  cyprus-testing:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
