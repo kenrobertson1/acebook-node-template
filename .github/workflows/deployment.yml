@@ -3,6 +3,7 @@ on: [push]
 jobs:
   deploy: 
     runs-on: ubuntu-latest
+    strategy:
       matrix:
         node-version: [12.x, 14.x]
         mongodb-version: ['4.0', '4.2', '4.4']
@@ -24,3 +25,4 @@ jobs:
         rm -rf node_modules
         zip -r acebook-node-template.zip .
         aws s3 cp acebook-node-template.zip s3://acebook-node
+        
