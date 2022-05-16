@@ -1,10 +1,10 @@
 name: Build and Deploy
 
 on:
-  workflow_dispatch: {push: {branches: [main]}}
+  workflow_dispatch: [push]
 
 env:
-  applicationfolder: acebook-node-template
+  applicationfolder: ./
   AWS_REGION: eu-west-2
   S3BUCKET: acebook-node
 
