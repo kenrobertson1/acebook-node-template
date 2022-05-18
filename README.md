@@ -1,5 +1,7 @@
 # Acebook
 
+[![CI/CD](https://github.com/kenrobertson1/acebook-node-template/actions/workflows/deployment.yml/badge.svg?branch=main)](https://github.com/kenrobertson1/acebook-node-template/actions/workflows/deployment.yml)
+
 This is a Node.js template for the Acebook engineering project.
 
 It uses:
