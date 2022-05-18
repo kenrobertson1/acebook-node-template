@@ -32,7 +32,7 @@ jobs:
         appname: ['acebook-template-app']
         deploy-group: ['acebook-template-group']
         s3-bucket: ['acebook-s3-template']
-        s3-filename: ['acebook-s3-template']
+        s3-filename: ['acebook-app']
 
     needs: buildAndTest
     steps:
