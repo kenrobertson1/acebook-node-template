@@ -1,0 +1,5 @@
+#!/bin/bash
+source /home/ec2-user/.bash_profile
+cd /home/ec2-user/signal/
+# ~/.nvm/versions/node/v16.7.0/bin/
+pm2 --name acebook-node-template start npm -- start
