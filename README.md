@@ -16,6 +16,10 @@ It uses:
 
 [Trello Board](https://trello.com/b/DA4anZb2/acebook-aws)
 
+## Model Diagram
+
+<img src="./model-acebook.png">
+
 ## Quickstart
 
 ### Install Node.js
