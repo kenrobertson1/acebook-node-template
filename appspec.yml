@@ -9,18 +9,14 @@ permissions:
     owner: ec2-user
     group: ec2-user
 hooks:
-    ApplicationStop:
-    - location: aws_scripts/application-stop.sh
-      timeout: 300
-      runas: ec2-user
   AfterInstall:
-    - location: aws_scripts/install_dependencies.sh
+    - location: aws_scripts/install_dependencies
       timeout: 300
       runas: ec2-user
   ApplicationStart:
-    - location: aws_scripts/start_server.sh
-      timeout: 60
+    - location: aws_scripts/start_server
+      # timeout: 60
       runas: ec2-user
   ApplicationStop:
-    - location: aws_scripts/stop_server.sh
+    - location: aws_scripts/stop_server
       runas: ec2-user
