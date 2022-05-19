@@ -2,7 +2,7 @@ name: CI/CD
 
 on: [push]
 jobs:
-  buildAndTest:
+  setup-environment:
     name: CI Pipeline
     runs-on: ubuntu-latest
    
@@ -22,6 +22,57 @@ jobs:
           path: "./*"
           key: ${{ github.sha }}
 
+  lint-run:
+    needs: setup-environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: use cache 
+        uses: actions/cache@v2
+        with:
+          path: "./*"
+          key: ${{ github.sha }}
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.7.0
+
+      - name: Lint run
+        run: npm run lint
+
+  jest-run:
+    needs: setup-environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: use cache 
+        uses: actions/cache@v2
+        with:
+          path: "./*"
+          key: ${{ github.sha }}
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.7.0
+
+      - name: Jest run
+        run: npm run test:unit
+
+  cypress-run:
+    needs: setup-environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: use cache 
+        uses: actions/cache@v2
+        with:
+          path: "./*"
+          key: ${{ github.sha }}
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.7.0
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm run start:test
+          wait-on: http://localhost:3030 
+
   deploy:
     name: CD Pipeline
     runs-on: ubuntu-latest
@@ -34,7 +85,7 @@ jobs:
         s3-bucket: ['acebook-s3-template']
         s3-filename: ['acebook-app']
 
-    needs: buildAndTest
+    needs: setup-environment, lint-run, jest-run, cypress-run
     steps:
       - uses: actions/checkout@v2
 
