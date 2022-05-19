@@ -2,30 +2,25 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /usr/local/codedeployresources
-    # destination: /home/ec2-user/signal
-# permissions:
-#   - object: /
-#     pattern: "**"
-#     owner: ec2-user
-#     group: ec2-user
+    destination: /home/ec2-user/signal
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
 hooks:
     ApplicationStop:
     - location: aws_scripts/application-stop.sh
       timeout: 300
-      # runas: ec2-user
-      runas: root
+      runas: ec2-user
   AfterInstall:
     - location: aws_scripts/install_dependencies.sh
       timeout: 300
-      # runas: ec2-user
-      runas: root
+      runas: ec2-user
   ApplicationStart:
     - location: aws_scripts/start_server.sh
       timeout: 60
-      # runas: ec2-user
-      runas: root
+      runas: ec2-user
   ApplicationStop:
     - location: aws_scripts/stop_server.sh
-      # runas: ec2-user
-      runas: root
+      runas: ec2-user
