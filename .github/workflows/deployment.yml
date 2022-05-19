@@ -23,6 +23,7 @@ jobs:
           key: ${{ github.sha }}
 
   lint-run:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
     needs: setup-environment
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +40,7 @@ jobs:
         run: npm run lint
 
   jest-run:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
     needs: setup-environment
     runs-on: ubuntu-latest
     steps:
@@ -55,6 +57,7 @@ jobs:
         run: npm run test:unit
 
   cypress-run:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
     needs: setup-environment
     runs-on: ubuntu-latest
     steps:
