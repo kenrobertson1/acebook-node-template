@@ -88,7 +88,8 @@ jobs:
         s3-bucket: ['acebook-s3-template']
         s3-filename: ['acebook-app']
 
-    needs: [setup-environment, lint-run, jest-run, cypress-run]
+    # needs: [setup-environment, lint-run, jest-run, cypress-run]
+    needs: [setup-environment]
     steps:
       - uses: actions/checkout@v2
 
