@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/signal
+    destination: /home/ec2-user/acebook
 permissions:
   - object: /
     pattern: "**"
@@ -15,7 +15,7 @@ hooks:
       runas: ec2-user
   ApplicationStart:
     - location: aws_scripts/start_server.sh
-      # timeout: 60
+      timeout: 300
       runas: ec2-user
   ApplicationStop:
     - location: aws_scripts/stop_server.sh
