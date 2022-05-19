@@ -28,7 +28,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
-        node-version: ['12.x', '14.x', '16.x', '18.x']
+        node-version: ['18.x']
         appname: ['acebook-template-app']
         deploy-group: ['acebook-template-group']
         s3-bucket: ['acebook-s3-template']
